@@ -42,13 +42,13 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    dob = models.DateField
+    dob = models.DateField()
     is_active = models.BooleanField(default=True)
     
     objects = UserProfileManager()
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['username, email, firstName, lastName, dob']
+    REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'dob']
 
     def get_full_name(self):
         """Retrieve full name of user"""
